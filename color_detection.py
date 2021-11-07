@@ -3,14 +3,16 @@
 import cv2
 import pandas as pd
 from colorthief import ColorThief
+
 from collections import Counter
 from sklearn.cluster import KMeans
-from matplotlib import colors
+
 import matplotlib.pyplot as plt
-import numpy as np
+
 
 image = cv2.imread('rFPki.jpg')
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
 plt.imshow(image)
 
 def rgb_to_hex(rgb_color):
@@ -21,20 +23,20 @@ def rgb_to_hex(rgb_color):
     return hex_color
 
 
-modified_img = cv2.resize(image, (900, 600), interpolation = cv2.INTER_AREA)
-modified_img = modified_img.reshape(modified_img.shape[0]*modified_img.shape[1], 3)
+# modified_img = cv2.resize(image, (900, 600), interpolation = cv2.INTER_AREA)
+# modified_img = modified_img.reshape(modified_img.shape[0]*modified_img.shape[1], 3)
+# clf = KMeans(n_clusters=5)
+# color_labels = clf.fit_predict(modified_img)
+# center_colors = clf.cluster_centers_
+# counts = Counter(color_labels)
+# ordered_colors = [center_colors[i] for i in counts.keys()]
+# hex_colors = [rgb_to_hex(ordered_colors[i]) for i in counts.keys()]
 
-
-clf = KMeans(n_clusters=5)
-color_labels = clf.fit_predict(modified_img)
-center_colors = clf.cluster_centers_
-counts = Counter(color_labels)
-ordered_colors = [center_colors[i] for i in counts.keys()]
-hex_colors = [rgb_to_hex(ordered_colors[i]) for i in counts.keys()]
-plt.figure(figsize=(12, 8))
-plt.pie(counts.values(), labels=hex_colors, colors=hex_colors)
-plt.savefig("color_analysis_report.png")
-print(hex_colors)
+#
+# plt.figure(figsize=(12, 8))
+# plt.pie(counts.values(), labels=hex_colors, colors=hex_colors)
+# plt.savefig("color_analysis_report.png")
+# print(hex_colors)
 
 
 
@@ -73,8 +75,8 @@ def draw_function(event, x, y, flags, param):
         g = int(g)
         r = int(r)
 
-def rgb_to_hex(r, g, b):
-  return ('{:X}{:X}{:X}').format(r, g, b)
+# def rgb_to_hex(r, g, b):
+#   return ('{:X}{:X}{:X}').format(r, g, b)
 
 
 #getting palette of of top 5 dominant color in rgb format
@@ -89,7 +91,7 @@ while True:
     cv2.imshow("image", img)
     if clicked:
 
-        # cv2.rectangle(image, start point, endpoint, color, thickness)-1 fills entire rectangle
+        # cv2.rectangle(image, start point, endpoint, color, -1 fills entire rectangle)
         cv2.rectangle(img, (20, 20), (990, 60), (b, g, r), -1)
 
 
