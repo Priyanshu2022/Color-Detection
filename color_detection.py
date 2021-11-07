@@ -15,12 +15,12 @@ image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 plt.imshow(image)
 
-def rgb_to_hex(rgb_color):
-    hex_color = "#"
-    for i in rgb_color:
-        i = int(i)
-        hex_color += ("{:02x}".format(i))
-    return hex_color
+# def rgb_to_hex(rgb_color):
+#     hex_color = "#"
+#     for i in rgb_color:
+#         i = int(i)
+#         hex_color += ("{:02x}".format(i))
+#     return hex_color
 
 
 # modified_img = cv2.resize(image, (900, 600), interpolation = cv2.INTER_AREA)
@@ -75,8 +75,8 @@ def draw_function(event, x, y, flags, param):
         g = int(g)
         r = int(r)
 
-# def rgb_to_hex(r, g, b):
-#   return ('{:X}{:X}{:X}').format(r, g, b)
+def rgb_to_hex(r, g, b):
+  return ('{:X}{:X}{:X}').format(r, g, b)
 
 
 #getting palette of of top 5 dominant color in rgb format
