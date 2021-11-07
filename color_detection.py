@@ -5,9 +5,6 @@ import pandas as pd
 from colorthief import ColorThief
 
 
-image = cv2.imread('rFPki.jpg')
-image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
 
 # img_path = r'C:\Users\Balaji\Downloads\color detection\colorpic'
 img = cv2.imread('rFPki.jpg')
@@ -50,6 +47,7 @@ def rgb_to_hex(r, g, b):
 
 #getting palette of of top 5 dominant color in rgb format
 palette = color_thief.get_palette(color_count=5)
+
 
 cv2.namedWindow('image')
 cv2.setMouseCallback('image', draw_function)
