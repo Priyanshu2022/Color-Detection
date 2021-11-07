@@ -39,15 +39,6 @@ def draw_function(event, x, y, flags, param):
         b = int(b)
         g = int(g)
         r = int(r)
-    if event ==cv2.EVENT_LBUTTONDOWN:
-        global cb,cg,cr,cx_pos,cy_pos,cclicked
-        cclicked=True
-        cx_pos=x
-        cy_pos = y
-        cb, cg, cr = img[y, x]
-        cb = int(cb)
-        cg = int(cg)
-        cr = int(cr)
 
 def rgb_to_hex(r, g, b):
   return ('{:X}{:X}{:X}').format(r, g, b)
