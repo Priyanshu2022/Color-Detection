@@ -1,4 +1,5 @@
 # Dataset - https://github.com/codebrainz/color-names/blob/master/output/colors.csv
+# Code in github - https://github.com/Priyanshu2022/Color-Detection
 
 import cv2
 import pandas as pd
@@ -28,11 +29,12 @@ def get_color_name(R, G, B):
 # function to get x,y coordinates of mouse double click
 def draw_function(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDBLCLK:
+        # used global to modify global variable inside the function
         global b, g, r, x_pos, y_pos, clicked
         clicked = True
         x_pos = x
         y_pos = y
-        b, g, r = img[y, x]
+        b,g,r= img[y, x]
         b = int(b)
         g = int(g)
         r = int(r)
@@ -50,6 +52,7 @@ cv2.namedWindow('image')
 cv2.setMouseCallback('image', draw_function)
 
 
+
 while True:
 
     cv2.imshow("image", img)
@@ -60,14 +63,22 @@ while True:
 
 
 
+        cv2.putText(img,'Tints',(870,400),2,0.8,(255,255,255),2,cv2.LINE_AA)
+
         # showing tints of color
+
         cv2.rectangle(img, (850, 440), (950, 480),((b + (0 * (255 - b))) ,g + (0 * (255 - g)), (r + (0 * (255 - r)))), -1)
         cv2.rectangle(img, (850, 480), (950, 520),((b +(0.25 * (255 - b))) ,g + (0.25 * (255 - g)),  (r + (0.25 * (255 - r)))), -1)
         cv2.rectangle(img, (850, 520), (950, 560),((b +(0.50 * (255 - b))) , g + (0.5 * (255 - g)),  (r + (0.5 * (255 - r)))), -1)
         cv2.rectangle(img, (850, 560), (950, 600),(( b +(0.75 * (255 - b))), g + (0.75 * (255 - g)),  (r + (0.75 * (255 - r)))), -1)
         cv2.rectangle(img, (850, 600), (950, 640),((b + (1 * (255 - b))) , g + (1 * (255 - g)), (r + (1 * (255 - r)))), -1)
 
+
+
+        cv2.putText(img,'Shades',(750,400),2,0.8,(255,255,255),2,cv2.LINE_AA)
+
         # showing shades of the color
+
         cv2.rectangle(img, (750, 440), (848, 480),(b * 1,g * 1, r * 1), -1)
         cv2.rectangle(img, (750, 480), (848, 520),(b * 0.75 ,g * 0.75, r * 0.75), -1)
         cv2.rectangle(img, (750, 520), (848, 560),(b * 0.5 ,g * 0.5, r * 0.5), -1)
