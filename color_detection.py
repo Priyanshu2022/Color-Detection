@@ -4,8 +4,6 @@ import cv2
 import pandas as pd
 from colorthief import ColorThief
 
-
-# img_path = r'C:\Users\Balaji\Downloads\color detection\colorpic'
 img = cv2.imread('rFPki.jpg')
 color_thief = ColorThief('rFPki.jpg')
 # declaring global variables ( used later on)
@@ -39,6 +37,7 @@ def draw_function(event, x, y, flags, param):
         g = int(g)
         r = int(r)
 
+# function to convert rgb to hex
 def rgb_to_hex(r, g, b):
   return ('{:X}{:X}{:X}').format(r, g, b)
 
@@ -59,13 +58,16 @@ while True:
         # cv2.rectangle(image, start point, endpoint, color, -1 fills entire rectangle)
         cv2.rectangle(img, (20, 20), (990, 60), (b, g, r), -1)
 
+
+
+        # showing tints of color
         cv2.rectangle(img, (850, 440), (950, 480),((b + (0 * (255 - b))) ,g + (0 * (255 - g)), (r + (0 * (255 - r)))), -1)
         cv2.rectangle(img, (850, 480), (950, 520),((b +(0.25 * (255 - b))) ,g + (0.25 * (255 - g)),  (r + (0.25 * (255 - r)))), -1)
         cv2.rectangle(img, (850, 520), (950, 560),((b +(0.50 * (255 - b))) , g + (0.5 * (255 - g)),  (r + (0.5 * (255 - r)))), -1)
         cv2.rectangle(img, (850, 560), (950, 600),(( b +(0.75 * (255 - b))), g + (0.75 * (255 - g)),  (r + (0.75 * (255 - r)))), -1)
         cv2.rectangle(img, (850, 600), (950, 640),((b + (1 * (255 - b))) , g + (1 * (255 - g)), (r + (1 * (255 - r)))), -1)
 
-
+        # showing shades of the color
         cv2.rectangle(img, (750, 440), (848, 480),(b * 1,g * 1, r * 1), -1)
         cv2.rectangle(img, (750, 480), (848, 520),(b * 0.75 ,g * 0.75, r * 0.75), -1)
         cv2.rectangle(img, (750, 520), (848, 560),(b * 0.5 ,g * 0.5, r * 0.5), -1)
@@ -75,9 +77,7 @@ while True:
 
 
 
-
-
-
+        # showing dominant colors in form of cirles
         cv2.circle(img, (30,600), 25, (palette[0][2], palette[0][1], palette[0][0]), -1)
         cv2.circle(img, (80,600), 25, (palette[1][2], palette[1][1], palette[1][0]), -1)
         cv2.circle(img, (130,600), 25, (palette[2][2], palette[2][1], palette[2][0]), -1)
